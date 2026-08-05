@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-Process node -ErrorAction SilentlyContinue)",
+      "PowerShell($conn = Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue; if \\($conn\\) { Stop-Process -Id $conn.OwningProcess -Force }; Start-Sleep -Seconds 1; Remove-Item -Recurse -Force \"c:\\\\Users\\\\nekyl\\\\Documents\\\\portfolio-agus\\\\.next\" -ErrorAction SilentlyContinue; Test-Path \"c:\\\\Users\\\\nekyl\\\\Documents\\\\portfolio-agus\\\\.next\")",
+      "Bash(curl -sL -D - -o \"C:\\\\Users\\\\nekyl\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-nekyl-Documents-portfolio-agus\\\\5acb6d65-feef-4ee7-9c28-6676a35fb596\\\\scratchpad\\\\served-postsmart6.png\" \"http://localhost:3000/_next/image?url=%2Fimages%2Fhome%2Fpostsmart-card.png&w=640&q=75\")"
+    ]
+  }
+}
