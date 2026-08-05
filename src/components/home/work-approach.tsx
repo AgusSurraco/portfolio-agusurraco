@@ -1,0 +1,8 @@
+import { homeContent } from "@/content/home";
+const layout = [
+  { w: 320, h: 428, l: 0, t: 0, p: 28, num: 120, title: 26, bg: "bg-[var(--color-bg-surface)]", border: "border-white", text: "", divider: "bg-[var(--color-accent)]", body: "text-white/70" },
+  { w: 640, h: 428, l: 320, t: 0, p: 28, num: 84, title: 26, bg: "bg-[var(--color-bg-surface-2)]", border: "border-white", text: "", divider: "bg-[var(--color-accent)]", body: "text-white/70" },
+  { w: 480, h: 438, l: 0, t: 428, p: 32, num: 84, title: 30, bg: "bg-[var(--color-bg-surface)]", border: "border-white", text: "", divider: "bg-[var(--color-accent)]", body: "text-white/70" },
+  { w: 480, h: 438, l: 480, t: 428, p: 32, num: 84, title: 30, bg: "bg-[var(--color-accent)]", border: "border-[var(--color-bg-base)]", text: "text-[var(--color-bg-base)]", divider: "bg-[var(--color-bg-base)]", body: "text-[var(--color-bg-base)]" },
+];
+export function WorkApproach(){return <section id="workflow" className="mx-auto w-[960px] py-[96px]"><h2 className="mb-12 font-sans text-[80px] font-extrabold uppercase tracking-[-2px]">Cómo trabajo</h2><div className="relative h-[866px] w-full">{homeContent.approach.map(([number,title,body],i)=>{const c=layout[i];return <article key={number} style={{left:c.l,top:c.t,width:c.w,height:c.h,padding:c.p}} className={`absolute overflow-hidden border-2 ${c.border} ${c.bg} ${c.text}`}><span className="font-sans font-semibold leading-none" style={{fontSize:c.num}}>{number}</span><h3 className="mt-5" style={{fontSize:c.title}}>{title}</h3><div className={`my-4 h-0.5 w-[40px] ${c.divider}`}/><p className={`max-w-[390px] text-[18px] leading-[28px] tracking-[-.18px] ${c.body}`}>{body}</p></article>;})}</div></section>}

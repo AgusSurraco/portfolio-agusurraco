@@ -1,0 +1,3 @@
+import { homeContent } from "@/content/home";
+import { OutlineButton } from "@/components/ui/button";
+export function Header() { return <header className="absolute inset-x-0 top-0 z-10 h-[83px] border-b-2 border-white bg-black/50"><nav className="mx-auto flex h-full w-[918px] items-center justify-between"><a className="flex h-10 w-[52px] items-center justify-center font-display text-[29px] font-extrabold tracking-tight" href="#inicio" style={{ backgroundColor: "#FF57AB", color: "#0A0A0A" }}>NK</a><div className="flex gap-8 font-sans text-[15px] uppercase tracking-[1px] text-white/85">{homeContent.nav.map((item) => <a href={`#${item.toLowerCase().replace(" ", "-")}`} key={item}>{item}</a>)}</div><OutlineButton>Contactar</OutlineButton></nav></header>; }
