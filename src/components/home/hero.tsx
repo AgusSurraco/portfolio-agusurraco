@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Header } from "@/components/layout/header";
+import { OutlineButton } from "@/components/ui/button";
 
 export function Hero() {
   return (
@@ -40,12 +41,7 @@ export function Hero() {
             </div>
             <p className="w-[584px] font-sans text-lg font-light leading-[27px] tracking-[-.4395px] text-white/60">Graduada en la UNLP · Buenos Aires</p>
           </div>
-          <a
-            href="#contacto"
-            className="flex h-10 items-center justify-center border-2 border-[var(--border-strong)] px-8 font-sans text-base font-normal uppercase text-white"
-          >
-            Contactar
-          </a>
+          <OutlineButton>Contactar</OutlineButton>
         </div>
       </div>
     </section>

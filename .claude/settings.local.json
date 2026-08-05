@@ -8,7 +8,13 @@
       "Bash(npx eslint *)",
       "Bash(curl -s http://localhost:3000/ -o /tmp/footer-check.html -w \"HTTP %{http_code}\\\\n\")",
       "Read(//tmp/**)",
-      "Bash(curl -s http://localhost:3000/ -o /tmp/footer-check2.html -w \"HTTP %{http_code}\\\\n\")"
+      "Bash(curl -s http://localhost:3000/ -o /tmp/footer-check2.html -w \"HTTP %{http_code}\\\\n\")",
+      "Bash(npx next *)",
+      "PowerShell($conn = Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue; if \\($conn\\) { Stop-Process -Id $conn.OwningProcess -Force; \"stopped\" } else { \"not running\" })",
+      "Bash(curl -s http://localhost:3000/ -o /tmp/btn-check.html -w \"HTTP %{http_code}\\\\n\")",
+      "Bash(curl -s http://localhost:3000/ -o /tmp/btn-check.html)",
+      "Bash(grep -o '/_next/static/[^\"]*\\\\.css' /tmp/btn-check.html | head -5)",
+      "Bash(curl -s \"http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__0g47woi._.css\" -o /tmp/bundle.css)"
     ]
   }
 }
