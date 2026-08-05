@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ' *)",
+      "Bash('/c/Program Files/Google/Chrome/Application/chrome.exe' --headless --disable-gpu --hide-scrollbars --window-size=320,4200 --screenshot=C:/Users/nekyl/AppData/Local/Temp/claude/c--Users-nekyl-Documents-portfolio-agus/5acb6d65-feef-4ee7-9c28-6676a35fb596/scratchpad/mobile-320b.png http://localhost:3000/)"
+    ]
+  }
+}

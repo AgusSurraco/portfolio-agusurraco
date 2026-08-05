@@ -19,7 +19,7 @@ export function ProjectCard({ project }: Props) {
 
   if (project.status === "live") {
     return (
-      <a href={`/proyectos/${project.slug}`} style={{ height: project.cardHeight }} className="group flex w-[300px] flex-col border-2 border-white bg-[var(--color-bg-surface)]">
+      <a href={`/proyectos/${project.slug}`} style={{ height: project.cardHeight }} className="group flex w-full flex-col border-2 border-white bg-[var(--color-bg-surface)] md:w-[300px]">
         {content}
       </a>
     );
@@ -27,14 +27,14 @@ export function ProjectCard({ project }: Props) {
 
   if (project.status === "draft") {
     return (
-      <div style={{ height: project.cardHeight }} className="group flex w-[300px] cursor-pointer flex-col border-2 border-white bg-[var(--color-bg-surface)]">
+      <div style={{ height: project.cardHeight }} className="group flex w-full cursor-pointer flex-col border-2 border-white bg-[var(--color-bg-surface)] md:w-[300px]">
         {content}
       </div>
     );
   }
 
   return (
-    <div style={{ height: project.cardHeight }} className="group relative flex w-[300px] cursor-not-allowed flex-col border-2 border-white bg-[var(--color-bg-surface)]">
+    <div style={{ height: project.cardHeight }} className="group relative flex w-full cursor-not-allowed flex-col border-2 border-white bg-[var(--color-bg-surface)] md:w-[300px]">
       <div className="flex flex-1 flex-col opacity-[0.55]">{content}</div>
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/75 opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100">
         <span className="text-sm uppercase tracking-[2px] text-white">En construcción</span>

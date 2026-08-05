@@ -48,14 +48,14 @@ export function Interests() {
   }, [selected]);
 
   return (
-    <section id="intereses" className="mx-auto w-[960px] scroll-mt-[83px] py-[96px]">
-      <h2 className="font-sans text-[64px] font-extrabold uppercase tracking-[-2px]">Otros intereses</h2>
-      <div className="mt-10 flex gap-6">
+    <section id="intereses" className="mx-auto w-full max-w-[960px] scroll-mt-[83px] px-5 py-16 md:w-[960px] md:px-0 md:py-[96px]">
+      <h2 className="text-4xl font-sans font-extrabold uppercase tracking-[-2px] md:text-[64px]">Otros intereses</h2>
+      <div className="mt-10 flex flex-wrap gap-3 md:gap-6">
         {homeContent.interests.map((item, index) => (
           <span className={`border px-4 py-2 text-lg uppercase tracking-[2px] ${index === 1 ? "border-[var(--color-accent)] text-[var(--color-accent)]" : "border-white/20"}`} key={item}>{item}</span>
         ))}
       </div>
-      <div className="mt-16 flex items-center">
+      <div className="mt-16 grid grid-cols-2 gap-3 md:flex md:items-center md:gap-0">
         {gallery.map((image, index) => (
           <button
             type="button"
@@ -63,16 +63,16 @@ export function Interests() {
             ref={(el) => { triggerRefs.current[index] = el; }}
             onClick={() => openAt(index)}
             aria-label={`Ampliar imagen: ${image.alt}`}
-            className="group h-[410px] w-[230px] overflow-hidden"
+            className="group aspect-[230/410] w-full overflow-hidden md:h-[410px] md:w-[230px]"
           >
-            <Image src={image.src} alt={image.alt} width={230} height={410} className="h-[410px] w-[230px] object-cover transition-transform duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]" />
+            <Image src={image.src} alt={image.alt} width={230} height={410} className="h-full w-full object-cover transition-transform duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05] md:h-[410px] md:w-[230px]" />
           </button>
         ))}
       </div>
-      <div className="mx-auto mt-20 w-[780px] border-2 border-white p-12">
+      <div className="mx-auto mt-20 w-full max-w-[780px] border-2 border-white p-6 md:p-12">
         <div className="flex h-16 w-16 items-center justify-center bg-[var(--color-accent)] font-[var(--font-inter)] text-7xl leading-none text-black">“</div>
-        <p className="mt-6 font-display text-[64px] leading-[70.4px] tracking-[-1px]">Encuentro en el dibujo y lettering un espacio de exploración y expresión.</p>
-        <p className="mt-8 border-l-2 border-[var(--color-accent)] pl-8 text-2xl leading-[26px] text-white/70">Trabajo con formas y trazos como una manera de soltar lo racional y conectar con lo visual.</p>
+        <p className="mt-6 font-display text-[32px] leading-[38px] tracking-[-.5px] md:text-[64px] md:leading-[70.4px] md:tracking-[-1px]">Encuentro en el dibujo y lettering un espacio de exploración y expresión.</p>
+        <p className="mt-8 border-l-2 border-[var(--color-accent)] pl-8 text-xl leading-[26px] text-white/70 md:text-2xl">Trabajo con formas y trazos como una manera de soltar lo racional y conectar con lo visual.</p>
       </div>
 
       {selected !== null && (
@@ -82,12 +82,12 @@ export function Interests() {
             role="dialog"
             aria-modal="true"
             aria-label={gallery[selected].alt}
-            className="relative"
+            className="relative h-full w-full md:h-[80vh] md:w-[80vw] md:max-w-3xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <button type="button" onClick={close} aria-label="Cerrar" className="absolute -top-10 right-0 text-3xl text-white/80 transition-colors hover:text-white">×</button>
-            <div className="relative h-[80vh] w-[80vw] max-w-3xl">
-              <Image src={gallery[selected].src} alt={gallery[selected].alt} fill sizes="80vw" className="object-contain" />
+            <button type="button" onClick={close} aria-label="Cerrar" className="absolute right-4 top-4 text-3xl text-white/80 transition-colors hover:text-white before:absolute before:left-1/2 before:top-1/2 before:h-11 before:w-11 before:-translate-x-1/2 before:-translate-y-1/2 before:content-[''] md:-top-10 md:right-0">×</button>
+            <div className="relative h-full w-full md:h-[80vh] md:w-[80vw] md:max-w-3xl">
+              <Image src={gallery[selected].src} alt={gallery[selected].alt} fill sizes="(max-width: 767px) 100vw, 80vw" className="object-contain" />
             </div>
           </div>
         </div>
