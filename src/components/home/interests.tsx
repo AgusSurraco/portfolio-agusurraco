@@ -48,14 +48,14 @@ export function Interests() {
   }, [selected]);
 
   return (
-    <section id="intereses" className="mx-auto w-full max-w-[960px] scroll-mt-[83px] px-5 py-16 md:w-[960px] md:px-0 md:py-[96px]">
-      <h2 className="text-4xl font-sans font-extrabold uppercase tracking-[-2px] md:text-[64px]">Otros intereses</h2>
+    <section id="intereses" className="mx-auto w-full max-w-[960px] scroll-mt-[83px] px-5 py-16 md:px-10 lg:w-[960px] lg:px-0 lg:py-[96px]">
+      <h2 className="text-4xl font-sans font-extrabold uppercase tracking-[-2px] md:text-[48px] lg:text-[64px]">Otros intereses</h2>
       <div className="mt-10 flex flex-wrap gap-3 md:gap-6">
         {homeContent.interests.map((item, index) => (
           <span className={`border px-4 py-2 text-lg uppercase tracking-[2px] ${index === 1 ? "border-[var(--color-accent)] text-[var(--color-accent)]" : "border-white/20"}`} key={item}>{item}</span>
         ))}
       </div>
-      <div className="mt-16 grid grid-cols-2 gap-3 md:flex md:items-center md:gap-0">
+      <div className="mt-16 grid grid-cols-2 gap-3 lg:flex lg:items-center lg:gap-0">
         {gallery.map((image, index) => (
           <button
             type="button"
@@ -63,15 +63,15 @@ export function Interests() {
             ref={(el) => { triggerRefs.current[index] = el; }}
             onClick={() => openAt(index)}
             aria-label={`Ampliar imagen: ${image.alt}`}
-            className="group aspect-[230/410] w-full overflow-hidden md:h-[410px] md:w-[230px]"
+            className="group aspect-[230/410] w-full overflow-hidden lg:h-[410px] lg:w-[230px]"
           >
-            <Image src={image.src} alt={image.alt} width={230} height={410} className="h-full w-full object-cover transition-transform duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05] md:h-[410px] md:w-[230px]" />
+            <Image src={image.src} alt={image.alt} width={230} height={410} className="h-full w-full object-cover transition-transform duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05] lg:h-[410px] lg:w-[230px]" />
           </button>
         ))}
       </div>
       <div className="mx-auto mt-20 w-full max-w-[780px] border-2 border-white p-6 md:p-12">
         <div className="flex h-16 w-16 items-center justify-center bg-[var(--color-accent)] font-[var(--font-inter)] text-7xl leading-none text-black">“</div>
-        <p className="mt-6 font-display text-[32px] leading-[38px] tracking-[-.5px] md:text-[64px] md:leading-[70.4px] md:tracking-[-1px]">Encuentro en el dibujo y lettering un espacio de exploración y expresión.</p>
+        <p className="mt-6 font-display text-[32px] leading-[38px] tracking-[-.5px] md:text-[48px] md:leading-[54px] lg:text-[64px] lg:leading-[70.4px] lg:tracking-[-1px]">Encuentro en el dibujo y lettering un espacio de exploración y expresión.</p>
         <p className="mt-8 border-l-2 border-[var(--color-accent)] pl-8 text-xl leading-[26px] text-white/70 md:text-2xl">Trabajo con formas y trazos como una manera de soltar lo racional y conectar con lo visual.</p>
       </div>
 
