@@ -1,5 +1,4 @@
 const contacts = [
-  { label: "Whatsapp", href: "https://wa.me/5492213199349", external: true },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/agustina-surraco-uxdesigner/", external: true },
   { label: "Gmail", href: "https://mail.google.com/mail/?view=cm&fs=1&to=agustinasurraco@gmail.com", external: true },
 ];
