@@ -95,7 +95,9 @@ export const postsmart = {
   prototype: {
     label: "Probar el prototipo →",
     href: "https://www.figma.com/proto/c3gvGITRQODOc1gWkR73Sh/Terminales?node-id=22-395&starting-point-node-id=22%3A395&scaling=scale-down&content-scaling=fixed&hide-ui=1",
-    caption: "Prototipo en Figma · Flujos de cobro, anulación y consultas",
+    caption: "Prototipo en Figma · Caso completo en Behance",
+    behanceLabel: "Ver caso en Behance ↗",
+    behanceHref: "https://www.behance.net/gallery/232266107/Rediseno-UXUI-para-punto-de-venta",
     eyebrow: "PROTOTIPO INTERACTIVO",
     title: "Probalo vos: cobrá, anulá o consultá una venta",
     hint: "Mirá el flujo de cobro o tocá Probar en vivo para navegarlo vos.",

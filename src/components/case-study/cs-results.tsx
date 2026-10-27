@@ -1,4 +1,4 @@
-import { PrototypeButton } from "@/components/case-study/prototype-button";
+import { PrototypeButton, brutalistButtonAlt } from "@/components/case-study/prototype-button";
 import { SectionShell, csCard } from "@/components/case-study/section-shell";
 import type { CaseStudy } from "@/content/case-studies/postsmart";
 
@@ -21,7 +21,10 @@ export function CsResults({ results, prototype }: { results: CaseStudy["results"
           <h3 className="mt-4 font-display text-[32px] font-extrabold leading-[1.1] tracking-[-1px] md:text-[40px]">{results.title}</h3>
           <p className="mt-6 text-[18px] leading-[1.6] text-[var(--color-text-secondary)]">{results.paragraph}</p>
           <div className="mt-10">
-            <PrototypeButton href={prototype.href} label={prototype.label} />
+            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+              <PrototypeButton href={prototype.href} label={prototype.label} className="w-full sm:w-auto" />
+              <a href={prototype.behanceHref} target="_blank" rel="noopener noreferrer" className={`${brutalistButtonAlt} w-full bg-transparent sm:w-auto`}>{prototype.behanceLabel}</a>
+            </div>
             <p className="mt-5 text-sm text-[var(--color-text-muted)]">{prototype.caption}</p>
           </div>
         </div>
