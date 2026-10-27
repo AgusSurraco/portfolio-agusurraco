@@ -1,18 +1,25 @@
 "use client";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PosDevice } from "@/components/case-study/pos-device";
-import { PrototypeButton } from "@/components/case-study/prototype-button";
+import { PrototypeButton, brutalistButton } from "@/components/case-study/prototype-button";
 import { SectionLabel } from "@/components/case-study/section-shell";
 import type { CaseStudy } from "@/content/case-studies/postsmart";
 
-export function PosPrototype({ prototype, mobileImage }: { prototype: CaseStudy["prototype"]; mobileImage: string }) {
-  const [isDesktop, setIsDesktop] = useState(false);
+export function PosPrototype({ prototype }: { prototype: CaseStudy["prototype"] }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const [live, setLive] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const query = window.matchMedia("(min-width: 768px)");
-    const update = () => setIsDesktop(query.matches);
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => {
+      setReducedMotion(query.matches);
+      const video = videoRef.current;
+      if (!video) return;
+      if (query.matches) video.pause();
+      else video.play().catch(() => {});
+    };
     update();
     query.addEventListener("change", update);
     return () => query.removeEventListener("change", update);
@@ -28,22 +35,40 @@ export function PosPrototype({ prototype, mobileImage }: { prototype: CaseStudy[
 
       <div>
         <PosDevice>
-          <div className="hidden h-full md:block">
-            {!loaded && (
-              <div className="absolute inset-0 flex items-center justify-center bg-[var(--color-bg-surface-2)] text-sm text-[var(--color-text-muted)]">{prototype.loading}</div>
-            )}
-            {isDesktop && (
+          {live ? (
+            <>
+              {!loaded && (
+                <div className="absolute inset-0 flex items-center justify-center bg-[var(--color-bg-surface-2)] text-sm text-[var(--color-text-muted)]">{prototype.loading}</div>
+              )}
               <iframe
                 title={prototype.embedTitle}
                 src={prototype.embedSrc}
-                loading="lazy"
                 allowFullScreen
                 onLoad={() => setLoaded(true)}
                 className="relative h-full w-full border-0"
               />
-            )}
-          </div>
-          <Image src={mobileImage} alt={prototype.mobileImageAlt} fill sizes="308px" className="object-cover object-[51%_50%] md:hidden" />
+            </>
+          ) : (
+            <>
+              <video
+                ref={videoRef}
+                src={prototype.video}
+                poster={prototype.poster}
+                aria-label={prototype.videoLabel}
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                controls={reducedMotion}
+                className="h-full w-full object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 hidden items-center justify-center md:flex">
+                <button type="button" onClick={() => setLive(true)} className={`${brutalistButton} pointer-events-auto bg-[var(--color-bg-base)]`}>
+                  {prototype.liveButton}
+                </button>
+              </div>
+            </>
+          )}
         </PosDevice>
         <div className="mt-10 flex justify-center md:hidden">
           <PrototypeButton href={prototype.href} label={prototype.label} />

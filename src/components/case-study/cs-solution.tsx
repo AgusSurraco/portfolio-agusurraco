@@ -32,7 +32,7 @@ export function CsSolution({ solution, prototype }: { solution: CaseStudy["solut
       <div className="mt-10">
         <PrototypeButton href={prototype.href} label={prototype.label} />
       </div>
-      <PosPrototype prototype={prototype} mobileImage={solution.image.src} />
+      <PosPrototype prototype={prototype} />
     </SectionShell>
   );
 }
