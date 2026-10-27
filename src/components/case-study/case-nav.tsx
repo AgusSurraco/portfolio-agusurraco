@@ -3,46 +3,31 @@ import { useEffect, useRef, useState } from "react";
 import type { CaseStudy } from "@/content/case-studies/postsmart";
 
 export function CaseNav({ nav }: { nav: CaseStudy["nav"] }) {
-  const [active, setActive] = useState<string | null>(null);
-  const [heroVisible, setHeroVisible] = useState(true);
-  const [footerVisible, setFooterVisible] = useState(false);
+  const [active, setActive] = useState(nav.items[0].id);
+  const [railVisible, setRailVisible] = useState(false);
   const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) setActive(entry.target.id);
-      });
-    }, { rootMargin: "-45% 0px -50% 0px" });
-    nav.items.forEach((item) => {
-      const el = document.getElementById(item.id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, [nav.items]);
-
-  useEffect(() => {
-    const hero = document.getElementById("inicio");
     const footer = document.getElementById("contacto");
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.target === hero) setHeroVisible(entry.isIntersecting);
-        if (entry.target === footer) setFooterVisible(entry.isIntersecting);
-      });
-    });
-    if (hero) observer.observe(hero);
-    if (footer) observer.observe(footer);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const footer = document.getElementById("contacto");
+    const sections = nav.items.map((item) => document.getElementById(item.id)).filter((el): el is HTMLElement => el !== null);
     let frame = 0;
     const update = () => {
       frame = 0;
+      const vh = window.innerHeight;
+
+      // Lista: aparece cuando Contexto llega al 75% de la pantalla, se oculta al entrar el footer.
+      const firstTop = sections[0]?.getBoundingClientRect().top ?? Infinity;
+      const footerTop = footer?.getBoundingClientRect().top ?? Infinity;
+      setRailVisible(firstTop <= vh * 0.75 && footerTop > vh);
+
+      // Sección activa: la última cuyo borde superior pasó el 40% de la pantalla.
+      let current = nav.items[0].id;
+      sections.forEach((el) => { if (el.getBoundingClientRect().top <= vh * 0.4) current = el.id; });
+      setActive(current);
+
       const bar = barRef.current;
       if (!bar || !footer) return;
-      const end = footer.offsetTop - window.innerHeight;
+      const end = footer.offsetTop - vh;
       const progress = end > 0 ? Math.min(Math.max(window.scrollY / end, 0), 1) : 1;
       bar.style.transform = `scaleX(${progress})`;
     };
@@ -55,9 +40,7 @@ export function CaseNav({ nav }: { nav: CaseStudy["nav"] }) {
       window.removeEventListener("resize", onScroll);
       cancelAnimationFrame(frame);
     };
-  }, []);
-
-  const railVisible = !heroVisible && !footerVisible;
+  }, [nav.items]);
 
   return (
     <>
