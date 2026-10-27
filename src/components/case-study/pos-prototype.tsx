@@ -5,6 +5,41 @@ import { PrototypeButton, brutalistButton } from "@/components/case-study/protot
 import { SectionLabel } from "@/components/case-study/section-shell";
 import type { CaseStudy } from "@/content/case-studies/postsmart";
 
+// Margen fijo que agrega el embed de Figma alrededor del prototipo (en px).
+const PAD_X = 48;
+const PAD_TOP = 107;
+const PAD_BOTTOM = 116;
+const SCREEN_W = 360;
+const SCREEN_H = 800;
+
+function ScaledEmbed({ src, title, onLoad }: { src: string; title: string; onLoad: () => void }) {
+  const screenRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const el = screenRef.current;
+    if (!el) return;
+    const observer = new ResizeObserver(([entry]) => setScale(entry.contentRect.width / SCREEN_W));
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={screenRef} className="absolute inset-0 overflow-hidden">
+      <div className="absolute left-0 top-0 origin-top-left" style={{ width: SCREEN_W, height: SCREEN_H, transform: `scale(${scale})` }}>
+        <iframe
+          title={title}
+          src={src}
+          allowFullScreen
+          onLoad={onLoad}
+          className="absolute border-0"
+          style={{ left: -PAD_X, top: -PAD_TOP, width: SCREEN_W + 2 * PAD_X, height: SCREEN_H + PAD_TOP + PAD_BOTTOM }}
+        />
+      </div>
+    </div>
+  );
+}
+
 export function PosPrototype({ prototype }: { prototype: CaseStudy["prototype"] }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -47,16 +82,10 @@ export function PosPrototype({ prototype }: { prototype: CaseStudy["prototype"] 
         <PosDevice>
           {live ? (
             <>
+              <ScaledEmbed src={prototype.embedSrc} title={prototype.embedTitle} onLoad={() => setLoaded(true)} />
               {!loaded && (
                 <div className="absolute inset-0 flex items-center justify-center bg-[var(--color-bg-surface-2)] text-sm text-[var(--color-text-muted)]">{prototype.loading}</div>
               )}
-              <iframe
-                title={prototype.embedTitle}
-                src={prototype.embedSrc}
-                allowFullScreen
-                onLoad={() => setLoaded(true)}
-                className="h-full w-full border-0"
-              />
             </>
           ) : (
             <video
