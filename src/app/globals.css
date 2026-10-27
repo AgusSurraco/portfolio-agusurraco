@@ -25,6 +25,16 @@
   --font-display: var(--font-bricolage);
 }
 
+/* Caso de estudio PostSmart */
+.case-study {
+  --cs-accent: #022BDC;
+  --cs-accent-light: #3D9BFF;
+  --cs-accent-mid: #1E88E5;
+}
+.cs-ghost { color: transparent; -webkit-text-stroke: 1.5px rgb(255 255 255 / 14%); }
+@keyframes cs-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.cs-marquee-track { animation: cs-marquee 30s linear infinite; }
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--color-bg-base); color: var(--color-text-primary); font-family: var(--font-dm-sans), sans-serif; overflow-x: hidden; }
@@ -32,4 +42,5 @@ a { color: inherit; text-decoration: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .cs-marquee-track { animation: none; }
 }
