@@ -9,6 +9,16 @@ export const postsmart = {
     title: "PostSmart — Caso de estudio · Neky Surraco",
     description: "Rediseño del flujo de cobro de PostSmart, la app de Posnet para comercios que cobran bajo presión.",
   },
+  nav: {
+    label: "Secciones del caso",
+    items: [
+      { id: "contexto", number: "01", label: "Contexto" },
+      { id: "problema", number: "02", label: "Problema" },
+      { id: "proceso", number: "03", label: "Proceso" },
+      { id: "solucion", number: "04", label: "Solución" },
+      { id: "resultado", number: "05", label: "Resultado" },
+    ],
+  },
   hero: {
     back: "← Volver al portfolio",
     pill: "CASO DE ESTUDIO · FINTECH / POS",

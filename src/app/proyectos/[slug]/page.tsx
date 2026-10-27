@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { CaseNav } from "@/components/case-study/case-nav";
 import { CsContext } from "@/components/case-study/cs-context";
 import { CsHero } from "@/components/case-study/cs-hero";
 import { CsMarquee } from "@/components/case-study/cs-marquee";
@@ -33,6 +34,7 @@ export default async function CaseStudyPage({ params }: Params) {
   if (!study) notFound();
   return (
     <main className="case-study">
+      <CaseNav nav={study.nav} />
       <CsHero hero={study.hero} />
       <CsContext context={study.context} />
       <CsProblem problem={study.problem} />
