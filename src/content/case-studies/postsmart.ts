@@ -100,7 +100,7 @@ export const postsmart = {
     title: "Probalo vos: cobrá, anulá o consultá una venta",
     hint: "Hacé clic dentro de la terminal para navegar el flujo.",
     embedTitle: "Prototipo PostSmart",
-    embedSrc: "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fc3gvGITRQODOc1gWkR73Sh%2FTerminales%3Fnode-id%3D22-395%26starting-point-node-id%3D22%253A395%26scaling%3Dscale-down%26content-scaling%3Dfixed%26hide-ui%3D1",
+    embedSrc: "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fc3gvGITRQODOc1gWkR73Sh%2FTerminales%3Fnode-id%3D22-395%26starting-point-node-id%3D22%253A395%26scaling%3Dcontain%26content-scaling%3Dfixed%26hide-ui%3D1",
     loading: "Cargando prototipo…",
     video: "/videos/postsmart-flujo-cobro.mp4",
     poster: "/images/postsmart/pos-home.png",

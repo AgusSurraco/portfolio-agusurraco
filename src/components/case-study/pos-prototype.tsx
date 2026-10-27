@@ -40,13 +40,15 @@ export function PosPrototype({ prototype }: { prototype: CaseStudy["prototype"] 
               {!loaded && (
                 <div className="absolute inset-0 flex items-center justify-center bg-[var(--color-bg-surface-2)] text-sm text-[var(--color-text-muted)]">{prototype.loading}</div>
               )}
-              <iframe
-                title={prototype.embedTitle}
-                src={prototype.embedSrc}
-                allowFullScreen
-                onLoad={() => setLoaded(true)}
-                className="relative h-full w-full border-0"
-              />
+              <div className="relative h-full w-full overflow-hidden rounded-[14px]">
+                <iframe
+                  title={prototype.embedTitle}
+                  src={prototype.embedSrc}
+                  allowFullScreen
+                  onLoad={() => setLoaded(true)}
+                  className="absolute left-[-6%] top-[-6%] h-[112%] w-[112%] border-0"
+                />
+              </div>
             </>
           ) : (
             <>
