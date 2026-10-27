@@ -7,11 +7,11 @@ function Step({ step, children }: { step: ProcessStep; children: ReactNode }) {
   return (
     <li className="pt-12 first:pt-10">
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-5">
-        <h3 className="flex items-baseline gap-4 font-display text-[26px] font-bold leading-tight tracking-[-.5px] md:text-[32px]">
-          <span className="text-[var(--cs-accent-light)]">{step.number}</span>
-          {step.title}
-        </h3>
-        <span className="rounded-full border border-white/[0.18] bg-white/[0.06] px-4 py-1.5 text-[12px] uppercase tracking-[2px]">{step.tag}</span>
+        <div>
+          <p className="mb-2 font-sans text-[12px] font-medium uppercase tracking-[3px] text-[var(--cs-accent-light)]">{step.eyebrow}</p>
+          <h3 className="font-display text-[26px] font-bold leading-tight tracking-[-.5px] md:text-[32px]">{step.title}</h3>
+        </div>
+        <span className="rounded-full border border-white/[0.18] bg-[var(--color-bg-base)] px-4 py-1.5 text-[12px] uppercase tracking-[2px]">{step.tag}</span>
       </div>
       <p className="mt-6 max-w-[760px] text-[18px] leading-[1.6] text-[var(--color-text-secondary)]">{step.body}</p>
       <div className="mt-8">{children}</div>

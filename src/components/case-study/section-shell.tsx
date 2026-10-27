@@ -16,8 +16,8 @@ export function SectionLabel({ children }: { children: ReactNode }) {
 export function SectionShell({ id, ghost, label, children }: { id: string; ghost: string; label: string; children: ReactNode }) {
   return (
     <section id={id} aria-label={label.split("— ")[1]} className="relative overflow-hidden pt-20 md:pt-[120px]">
-      <div className={`relative ${csContainer}`}>
-        <span aria-hidden="true" className="cs-ghost pointer-events-none absolute right-0 top-[-40px] hidden select-none font-sans text-[260px] font-black leading-none md:block">{ghost}</span>
+      <span aria-hidden="true" className="cs-ghost pointer-events-none absolute right-0 top-[-40px] z-0 hidden translate-x-[20%] select-none font-sans text-[220px] font-black leading-none lg:block">{ghost}</span>
+      <div className={`relative z-10 ${csContainer}`}>
         <Reveal className="relative">
           <SectionLabel>{label}</SectionLabel>
           {children}

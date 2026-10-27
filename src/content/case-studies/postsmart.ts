@@ -1,6 +1,6 @@
 export type CaseStudyCard = { title: string; body: string };
 export type AuditRow = { screen: string; tag: "CLARO" | "MEJORABLE" | "REDUNDANTE"; description: string; diagnosis: string };
-export type ProcessStep = { number: string; title: string; tag: string; body: string };
+export type ProcessStep = { number: string; eyebrow: string; title: string; tag: string; body: string };
 export type Stat = { value: string; label: string; detail: string };
 
 export const postsmart = {
@@ -57,9 +57,9 @@ export const postsmart = {
   process: {
     label: "03 — Proceso",
     steps: [
-      { number: "01", title: "Empatizar y definir", tag: "Investigación", body: "Entrevistas con comerciantes y emprendedores para mapear sus motivaciones, preocupaciones, objetivos y contexto de uso — la base para sintetizar el problema en preguntas concretas de diseño (HMW)." },
-      { number: "02", title: "Idear y prototipar", tag: "Prototipado", body: "El mapeo del flujo original reveló hasta 6 pantallas secuenciales para completar un solo cobro — incluyendo un paso de \"confirmar monto\" redundante con el de ingreso, sin edición inline. Prototipé una versión que fusiona esos pasos, reduce las confirmaciones a las estrictamente necesarias y reemplaza degradés y sombras por una interfaz plana de alto contraste." },
-      { number: "03", title: "Testear y validar", tag: "Validación", body: "Testeo de tareas con comerciantes reales, comparando el flujo rediseñado contra el original: tiempo para completar un cobro, errores de carga de datos y una encuesta de satisfacción post-uso. Los resultados (30% menos tiempo, 25% menos errores, 4.8/5 de satisfacción) validaron que fusionar los pasos redundantes reducía la fricción sin sacrificar precisión." },
+      { number: "01", eyebrow: "PASO 1", title: "Empatizar y definir", tag: "Investigación", body: "Entrevistas con comerciantes y emprendedores para mapear sus motivaciones, preocupaciones, objetivos y contexto de uso — la base para sintetizar el problema en preguntas concretas de diseño (HMW)." },
+      { number: "02", eyebrow: "PASO 2", title: "Idear y prototipar", tag: "Prototipado", body: "El mapeo del flujo original reveló hasta 6 pantallas secuenciales para completar un solo cobro — incluyendo un paso de \"confirmar monto\" redundante con el de ingreso, sin edición inline. Prototipé una versión que fusiona esos pasos, reduce las confirmaciones a las estrictamente necesarias y reemplaza degradés y sombras por una interfaz plana de alto contraste." },
+      { number: "03", eyebrow: "PASO 3", title: "Testear y validar", tag: "Validación", body: "Testeo de tareas con comerciantes reales, comparando el flujo rediseñado contra el original: tiempo para completar un cobro, errores de carga de datos y una encuesta de satisfacción post-uso. Los resultados (30% menos tiempo, 25% menos errores, 4.8/5 de satisfacción) validaron que fusionar los pasos redundantes reducía la fricción sin sacrificar precisión." },
     ] as ProcessStep[],
     images: [
       { src: "/images/postsmart/proceso-1.png", alt: "Referencia analizada: lector de tarjetas Mercado Pago Point", width: 466, height: 350 },
