@@ -1,8 +1,9 @@
 import Image from "next/image";
+import { PrototypeButton } from "@/components/case-study/prototype-button";
 import { SectionShell } from "@/components/case-study/section-shell";
 import type { CaseStudy } from "@/content/case-studies/postsmart";
 
-export function CsSolution({ solution }: { solution: CaseStudy["solution"] }) {
+export function CsSolution({ solution, prototype }: { solution: CaseStudy["solution"]; prototype: CaseStudy["prototype"] }) {
   return (
     <SectionShell id="solucion" ghost="04" label={solution.label}>
       <div className="mt-10 grid gap-10 md:grid-cols-2 md:gap-16">
@@ -27,6 +28,9 @@ export function CsSolution({ solution }: { solution: CaseStudy["solution"] }) {
         sizes="(min-width: 1024px) 960px, 100vw"
         className="mt-12 h-auto w-full rounded-[var(--radius-xl)]"
       />
+      <div className="mt-10">
+        <PrototypeButton href={prototype.href} label={prototype.label} />
+      </div>
     </SectionShell>
   );
 }

@@ -1,7 +1,8 @@
+import { PrototypeButton } from "@/components/case-study/prototype-button";
 import { SectionShell, csCard } from "@/components/case-study/section-shell";
 import type { CaseStudy } from "@/content/case-studies/postsmart";
 
-export function CsResults({ results }: { results: CaseStudy["results"] }) {
+export function CsResults({ results, prototype }: { results: CaseStudy["results"]; prototype: CaseStudy["prototype"] }) {
   return (
     <SectionShell id="resultado" ghost="05" label={results.label}>
       <ul className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
@@ -19,6 +20,10 @@ export function CsResults({ results }: { results: CaseStudy["results"] }) {
           <p className="text-[12px] uppercase tracking-[3px] text-[var(--cs-accent-light)]">{results.eyebrow}</p>
           <h3 className="mt-4 font-display text-[32px] font-extrabold leading-[1.1] tracking-[-1px] md:text-[40px]">{results.title}</h3>
           <p className="mt-6 text-[18px] leading-[1.6] text-[var(--color-text-secondary)]">{results.paragraph}</p>
+          <div className="mt-10">
+            <PrototypeButton href={prototype.href} label={prototype.label} />
+            <p className="mt-5 text-sm text-[var(--color-text-muted)]">{prototype.caption}</p>
+          </div>
         </div>
         <ul className="flex flex-col gap-3">
           {results.learnings.map((card) => (

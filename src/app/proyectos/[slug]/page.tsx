@@ -38,8 +38,8 @@ export default async function CaseStudyPage({ params }: Params) {
       <CsProblem problem={study.problem} />
       <CsMarquee words={study.marquee} />
       <CsProcess process={study.process} />
-      <CsSolution solution={study.solution} />
-      <CsResults results={study.results} />
+      <CsSolution solution={study.solution} prototype={study.prototype} />
+      <CsResults results={study.results} prototype={study.prototype} />
       <div className="pt-20 md:pt-[120px]"><Footer /></div>
     </main>
   );

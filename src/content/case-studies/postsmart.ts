@@ -92,6 +92,11 @@ export const postsmart = {
     ],
     image: { src: "/images/postsmart/solucion.png", alt: "Dos terminales con PostSmart rediseñado: pantalla de pago aprobado y pantalla inicial con Cobrar, Consultas, Anular y resumen de ventas", width: 1860, height: 1240 },
   },
+  prototype: {
+    label: "Probar el prototipo →",
+    href: "https://www.figma.com/proto/c3gvGITRQODOc1gWkR73Sh/Terminales?node-id=22-395&starting-point-node-id=22%3A395&scaling=scale-down&content-scaling=fixed&hide-ui=1",
+    caption: "Prototipo en Figma · Flujos de cobro, anulación y consultas",
+  },
   results: {
     label: "05 — Resultado",
     stats: [
