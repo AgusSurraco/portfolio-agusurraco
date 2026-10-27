@@ -37,7 +37,7 @@ export function CsHero({ hero }: { hero: CaseStudy["hero"] }) {
       <Header />
 
       <div className={`relative flex flex-1 flex-col pt-[107px] ${csContainer}`}>
-        <a href="/" className="inline-flex min-h-[44px] w-fit items-center text-sm text-white/70 transition-colors hover:text-white">{hero.back}</a>
+        <a href={hero.backHref} className="inline-flex min-h-[44px] w-fit items-center text-sm text-white/70 transition-colors hover:text-white">{hero.back}</a>
 
         <div className="mt-8 grid flex-1 items-center gap-12 pb-12 md:grid-cols-[1fr_auto] md:gap-8">
           <div>

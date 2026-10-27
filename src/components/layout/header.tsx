@@ -4,6 +4,7 @@ import { homeContent } from "@/content/home";
 import { OutlineButton } from "@/components/ui/button";
 
 const SCROLL_THRESHOLD = 50;
+const CV_HREF = "/cv/agustina-surraco-cv.pdf";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -34,8 +35,9 @@ export function Header() {
         <div className="hidden items-center gap-8 font-sans text-[15px] uppercase tracking-[1px] text-white/85 lg:flex">
           {homeContent.nav.map((item, i) => <a href={navLinks[i]} key={item}>{item}</a>)}
         </div>
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-4 lg:flex">
           <OutlineButton>Contactar</OutlineButton>
+          <OutlineButton href={CV_HREF} newTab>Descargar CV</OutlineButton>
         </div>
         <button
           type="button"
@@ -66,6 +68,7 @@ export function Header() {
             </a>
           ))}
           <OutlineButton>Contactar</OutlineButton>
+          <OutlineButton href={CV_HREF} newTab>Descargar CV</OutlineButton>
         </div>
       )}
     </header>

@@ -8,6 +8,7 @@ import { CsProblem } from "@/components/case-study/cs-problem";
 import { CsProcess } from "@/components/case-study/cs-process";
 import { CsResults } from "@/components/case-study/cs-results";
 import { CsSolution } from "@/components/case-study/cs-solution";
+import { NextCase } from "@/components/case-study/next-case";
 import { Footer } from "@/components/layout/footer";
 import { caseStudies } from "@/content/case-studies/postsmart";
 import { featuredProjects } from "@/content/projects";
@@ -42,6 +43,7 @@ export default async function CaseStudyPage({ params }: Params) {
       <CsProcess process={study.process} />
       <CsSolution solution={study.solution} prototype={study.prototype} />
       <CsResults results={study.results} prototype={study.prototype} />
+      <NextCase currentSlug={study.slug} />
       <div className="pt-20 md:pt-[120px]"><Footer /></div>
     </main>
   );
