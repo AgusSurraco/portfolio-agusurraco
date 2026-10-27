@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { PosPrototype } from "@/components/case-study/pos-prototype";
 import { PrototypeButton } from "@/components/case-study/prototype-button";
 import { SectionShell } from "@/components/case-study/section-shell";
 import type { CaseStudy } from "@/content/case-studies/postsmart";
@@ -31,6 +32,7 @@ export function CsSolution({ solution, prototype }: { solution: CaseStudy["solut
       <div className="mt-10">
         <PrototypeButton href={prototype.href} label={prototype.label} />
       </div>
+      <PosPrototype prototype={prototype} mobileImage={solution.image.src} />
     </SectionShell>
   );
 }
