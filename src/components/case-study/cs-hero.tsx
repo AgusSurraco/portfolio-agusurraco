@@ -37,9 +37,7 @@ export function CsHero({ hero }: { hero: CaseStudy["hero"] }) {
       <Header />
 
       <div className={`relative flex flex-1 flex-col pt-[107px] ${csContainer}`}>
-        <a href={hero.backHref} className="inline-flex min-h-[44px] w-fit items-center text-sm text-white/70 transition-colors hover:text-white">{hero.back}</a>
-
-        <div className="mt-8 grid flex-1 items-center gap-12 pb-12 md:grid-cols-[1fr_auto] md:gap-8">
+        <div className="grid flex-1 items-center gap-12 pb-12 md:grid-cols-[1fr_auto] md:gap-8">
           <div>
             <div className="flex flex-wrap items-center gap-4">
               <span aria-hidden="true" className="flex h-14 w-14 items-center justify-center rounded-[14px] bg-[var(--cs-accent)] font-display text-[28px] font-extrabold">P</span>
@@ -48,10 +46,9 @@ export function CsHero({ hero }: { hero: CaseStudy["hero"] }) {
                 {hero.pill}
               </span>
             </div>
-            <h1 className="mt-8 font-display text-[48px] font-extrabold leading-[1.02] tracking-[-3.5px] md:text-[72px] lg:text-[88px]">
-              {hero.titleLine1}
-              <br />
-              <span className="text-[var(--cs-accent-light)]">{hero.titleLine2}</span>
+            <h1 className="mt-8 font-display text-[clamp(48px,6.2vw,88px)] font-extrabold leading-[1.02] tracking-[-3.5px]">
+              <span className="block whitespace-nowrap">{hero.titleLine1}</span>
+              <span className="block whitespace-nowrap text-[var(--cs-accent-light)]">{hero.titleLine2}</span>
             </h1>
             <p className="mt-6 max-w-[480px] font-sans text-[20px] font-light leading-[1.5] text-white/65">{hero.subtitle}</p>
           </div>

@@ -20,8 +20,6 @@ export const postsmart = {
     ],
   },
   hero: {
-    back: "← Volver al portfolio",
-    backHref: "/#proyectos",
     pill: "CASO DE ESTUDIO · FINTECH / POS",
     titleLine1: "Menos pasos,",
     titleLine2: "más cobros.",

@@ -1,4 +1,5 @@
 "use client";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { homeContent } from "@/content/home";
 import { OutlineButton } from "@/components/ui/button";
@@ -26,14 +27,17 @@ export function Header() {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [menuOpen]);
 
-  const navLinks = homeContent.nav.map((item) => `#${item.toLowerCase().replace(" ", "-")}`);
+  const pathname = usePathname();
+  const isCaseStudy = pathname.startsWith("/proyectos/");
+  const navItems = isCaseStudy ? ["Proyectos"] : homeContent.nav;
+  const navLinks = navItems.map((item) => `${isCaseStudy ? "/" : ""}#${item.toLowerCase().replace(" ", "-")}`);
 
   return (
     <header className={`fixed inset-x-0 top-0 z-40 h-[83px] border-b-[0.5px] transition-colors duration-300 ease-in-out ${scrolled || menuOpen ? "border-[var(--border-subtle)] bg-[var(--color-bg-base)]" : "border-transparent bg-transparent"}`}>
       <nav className="mx-auto flex h-full w-full max-w-[918px] items-center justify-between px-5 lg:w-[918px] lg:px-0">
-        <a className="relative flex h-10 w-[52px] items-center justify-center font-display text-[29px] font-extrabold tracking-tight" href="#inicio" style={{ backgroundColor: "#FF57AB", color: "#0A0A0A" }}>NK</a>
+        <a className="relative flex h-10 w-[52px] items-center justify-center font-display text-[29px] font-extrabold tracking-tight" href="/" aria-label="Ir al inicio" style={{ backgroundColor: "#FF57AB", color: "#0A0A0A" }}>NK</a>
         <div className="hidden items-center gap-8 font-sans text-[15px] uppercase tracking-[1px] text-white/85 lg:flex">
-          {homeContent.nav.map((item, i) => <a href={navLinks[i]} key={item}>{item}</a>)}
+          {navItems.map((item, i) => <a href={navLinks[i]} key={item}>{item}</a>)}
         </div>
         <div className="hidden items-center gap-4 lg:flex">
           <OutlineButton>Contactar</OutlineButton>
@@ -57,7 +61,7 @@ export function Header() {
           className="fixed inset-x-0 bottom-0 top-[83px] z-30 flex flex-col items-center justify-center gap-8 bg-[var(--color-bg-base)] lg:hidden"
           onClick={() => setMenuOpen(false)}
         >
-          {homeContent.nav.map((item, i) => (
+          {navItems.map((item, i) => (
             <a
               href={navLinks[i]}
               key={item}
