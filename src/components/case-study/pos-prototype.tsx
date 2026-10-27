@@ -23,7 +23,12 @@ export function PosPrototype({ prototype }: { prototype: CaseStudy["prototype"] 
     update();
     query.addEventListener("change", update);
     return () => query.removeEventListener("change", update);
-  }, []);
+  }, [live]);
+
+  function toggleLive() {
+    setLoaded(false);
+    setLive((v) => !v);
+  }
 
   return (
     <div className="mt-16 grid items-center gap-10 md:grid-cols-[2fr_3fr] md:gap-12">
@@ -31,6 +36,11 @@ export function PosPrototype({ prototype }: { prototype: CaseStudy["prototype"] 
         <SectionLabel>{prototype.eyebrow}</SectionLabel>
         <h3 className="mt-5 font-display text-[28px] font-extrabold leading-[1.15] tracking-[-1px] md:text-[36px]">{prototype.title}</h3>
         <p className="mt-4 text-[var(--color-text-muted)]">{prototype.hint}</p>
+        <div className="mt-8 hidden md:block">
+          <button type="button" onClick={toggleLive} className={`${brutalistButton} bg-transparent`}>
+            {live ? prototype.demoButton : prototype.liveButton}
+          </button>
+        </div>
       </div>
 
       <div>
@@ -40,36 +50,27 @@ export function PosPrototype({ prototype }: { prototype: CaseStudy["prototype"] 
               {!loaded && (
                 <div className="absolute inset-0 flex items-center justify-center bg-[var(--color-bg-surface-2)] text-sm text-[var(--color-text-muted)]">{prototype.loading}</div>
               )}
-              <div className="relative h-full w-full overflow-hidden rounded-[14px]">
-                <iframe
-                  title={prototype.embedTitle}
-                  src={prototype.embedSrc}
-                  allowFullScreen
-                  onLoad={() => setLoaded(true)}
-                  className="absolute left-[-6%] top-[-6%] h-[112%] w-[112%] border-0"
-                />
-              </div>
+              <iframe
+                title={prototype.embedTitle}
+                src={prototype.embedSrc}
+                allowFullScreen
+                onLoad={() => setLoaded(true)}
+                className="h-full w-full border-0"
+              />
             </>
           ) : (
-            <>
-              <video
-                ref={videoRef}
-                src={prototype.video}
-                poster={prototype.poster}
-                aria-label={prototype.videoLabel}
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                controls={reducedMotion}
-                className="h-full w-full object-cover"
-              />
-              <div className="pointer-events-none absolute inset-0 hidden items-center justify-center md:flex">
-                <button type="button" onClick={() => setLive(true)} className={`${brutalistButton} pointer-events-auto bg-[var(--color-bg-base)]`}>
-                  {prototype.liveButton}
-                </button>
-              </div>
-            </>
+            <video
+              ref={videoRef}
+              src={prototype.video}
+              poster={prototype.poster}
+              aria-label={prototype.videoLabel}
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              controls={reducedMotion}
+              className="h-full w-full object-cover"
+            />
           )}
         </PosDevice>
         <div className="mt-10 flex justify-center md:hidden">
