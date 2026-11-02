@@ -1,8 +1,15 @@
 import Image from "next/image";
 import { Header } from "@/components/layout/header";
 import { OutlineButton } from "@/components/ui/button";
-import { Chip } from "@/components/ui/chip";
+import { glass } from "@/components/ui/chip";
 import { FoldText } from "@/components/ui/fold-text";
+
+const meta = [
+  { label: "Experiencia", value: "6 años" },
+  { label: "Formación", value: "UNLP · Comunicación Visual" },
+  { label: "Base", value: "Buenos Aires" },
+  { label: "Foco", value: "UX/UI · Producto" },
+];
 
 export function Hero() {
   const introBlock = (
@@ -16,9 +23,8 @@ export function Hero() {
           <span className="font-sans font-semibold text-white/92">Product Designer especializada en UX/UI</span>{" "}
           que lleva productos de la estrategia al MVP.
         </p>
-        <p className="font-sans font-light"><span className="lg:hidden">6 años de experiencia diseñando con criterio de negocio y ejecución visual.</span><span className="hidden lg:inline">Diseño con criterio de negocio y ejecución visual.</span></p>
+        <p className="font-sans font-light">Diseño con criterio de negocio y ejecución visual.</p>
       </div>
-      <p className="font-sans text-lg font-light leading-[27px] tracking-[-.4395px] text-white/60 md:w-[584px] lg:hidden">Graduada en la UNLP · Buenos Aires</p>
     </div>
   );
 
@@ -32,7 +38,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative h-auto overflow-hidden lg:h-[856px]"
+      className="relative h-auto overflow-hidden lg:h-[980px]"
       style={{
         backgroundColor: "var(--color-bg-base)",
         backgroundImage:
@@ -112,14 +118,23 @@ export function Hero() {
               <Image src="/images/home/hero-portrait.png" alt="Retrato de Agustina Neky Surraco" width={295} height={325} className="h-full w-full object-cover" />
               <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(132.214deg, rgba(0,0,0,.4) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,.3) 100%)" }} />
             </div>
-            <Chip value="6 años" label="de experiencia" className="absolute -left-10 -top-4" />
-            <Chip value="UNLP" label="Buenos Aires" className="absolute -right-8 bottom-10" />
           </div>
           <div className="flex flex-col items-start gap-9">
             {introBlock}
             <OutlineButton>Contactar</OutlineButton>
           </div>
         </div>
+      </div>
+
+      <div className="relative z-10 lg:absolute lg:inset-x-0 lg:bottom-0">
+        <dl className={`${glass} mx-auto grid w-full max-w-[960px] grid-cols-2 gap-x-6 gap-y-4 rounded-t-[20px] border-b-0 px-6 py-5 md:grid-cols-4`}>
+          {meta.map((item) => (
+            <div key={item.label}>
+              <dt className="text-[11px] uppercase tracking-[2px] text-[var(--color-text-muted)]">{item.label}</dt>
+              <dd className="mt-1 text-sm text-white/90">{item.value}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );
