@@ -1,4 +1,4 @@
-import { csContainer, SectionLabel } from "@/components/case-study/section-shell";
+import { container, SectionLabel } from "@/components/ui/section";
 import { ProjectCard } from "@/components/projects/project-card";
 import { featuredProjects } from "@/content/projects";
 
@@ -8,7 +8,7 @@ export function NextCase({ currentSlug }: { currentSlug: string }) {
   if (!next || next.slug === currentSlug) return null;
   return (
     <section aria-label="Siguiente caso" className="pt-20 md:pt-[120px]">
-      <div className={csContainer}>
+      <div className={container}>
         <SectionLabel>Siguiente caso</SectionLabel>
         <div className="mt-8">
           <ProjectCard project={next} />

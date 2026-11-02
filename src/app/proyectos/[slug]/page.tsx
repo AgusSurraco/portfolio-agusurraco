@@ -34,7 +34,7 @@ export default async function CaseStudyPage({ params }: Params) {
   const study = getCaseStudy((await params).slug);
   if (!study) notFound();
   return (
-    <main className="case-study">
+    <main className="theme-postsmart">
       <CaseNav nav={study.nav} />
       <CsHero hero={study.hero} />
       <CsContext context={study.context} />

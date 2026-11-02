@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Header } from "@/components/layout/header";
-import { csContainer } from "@/components/case-study/section-shell";
+import { container } from "@/components/ui/section";
 import type { CaseStudy } from "@/content/case-studies/postsmart";
 
 const glass = "border border-white/[0.16] bg-black/[0.72] backdrop-blur-[24px]";
@@ -36,7 +36,7 @@ export function CsHero({ hero }: { hero: CaseStudy["hero"] }) {
       />
       <Header />
 
-      <div className={`relative flex flex-1 flex-col pt-[107px] ${csContainer}`}>
+      <div className={`relative flex flex-1 flex-col pt-[107px] ${container}`}>
         <div className="grid flex-1 items-center gap-12 pb-12 md:grid-cols-[1fr_auto] md:gap-8">
           <div>
             <div className="flex flex-wrap items-center gap-4">

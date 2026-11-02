@@ -25,11 +25,24 @@
   --font-display: var(--font-bricolage);
 }
 
-/* Caso de estudio PostSmart */
-.case-study {
-  --cs-accent: #022BDC;
-  --cs-accent-light: #3D9BFF;
-  --cs-accent-mid: #1E88E5;
+/* Temas: cada página tiene su color de acento */
+.theme-nk {
+  --accent: #FF57AB;
+  --accent-light: #FF7DBE;
+  --accent-mid: #FF2D95;
+  --on-accent: #0A0A0A;
+}
+.theme-postsmart {
+  --accent: #022BDC;
+  --accent-light: #3D9BFF;
+  --accent-mid: #1E88E5;
+  --on-accent: #FFFFFF;
+}
+/* Alias para no romper lo existente */
+.theme-nk, .theme-postsmart {
+  --cs-accent: var(--accent);
+  --cs-accent-light: var(--accent-light);
+  --cs-accent-mid: var(--accent-mid);
 }
 .cs-ghost { color: transparent; -webkit-text-stroke: 1.5px rgb(255 255 255 / 14%); }
 @keyframes cs-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }

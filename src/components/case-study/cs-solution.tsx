@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { PosPrototype } from "@/components/case-study/pos-prototype";
-import { SectionShell } from "@/components/case-study/section-shell";
+import { Section } from "@/components/ui/section";
 import type { CaseStudy } from "@/content/case-studies/postsmart";
 
 export function CsSolution({ solution, prototype }: { solution: CaseStudy["solution"]; prototype: CaseStudy["prototype"] }) {
   return (
-    <SectionShell id="solucion" ghost="04" label={solution.label}>
+    <Section id="solucion" ghost="04" label={solution.label}>
       <div className="mt-10 grid gap-10 md:grid-cols-2 md:gap-16">
         <div>
           <h2 className="font-display text-[36px] font-extrabold leading-[1.1] tracking-[-1.5px] md:text-[48px]">{solution.title}</h2>
@@ -29,6 +29,6 @@ export function CsSolution({ solution, prototype }: { solution: CaseStudy["solut
         className="mt-12 h-auto w-full rounded-[var(--radius-xl)]"
       />
       <PosPrototype prototype={prototype} />
-    </SectionShell>
+    </Section>
   );
 }

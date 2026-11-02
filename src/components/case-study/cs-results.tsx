@@ -1,13 +1,14 @@
-import { PrototypeButton, brutalistButtonAlt } from "@/components/case-study/prototype-button";
-import { SectionShell, csCard } from "@/components/case-study/section-shell";
+import { PrototypeButton } from "@/components/case-study/prototype-button";
+import { brutalistButtonAlt } from "@/components/ui/button";
+import { Section, card } from "@/components/ui/section";
 import type { CaseStudy } from "@/content/case-studies/postsmart";
 
 export function CsResults({ results, prototype }: { results: CaseStudy["results"]; prototype: CaseStudy["prototype"] }) {
   return (
-    <SectionShell id="resultado" ghost="05" label={results.label}>
+    <Section id="resultado" ghost="05" label={results.label}>
       <ul className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
         {results.stats.map((stat, i) => (
-          <li key={stat.label} className={`flex h-full flex-col p-5 md:p-6 ${i === 0 ? "rounded-[var(--radius-xl)] bg-[var(--cs-accent)]" : csCard}`}>
+          <li key={stat.label} className={`flex h-full flex-col p-5 md:p-6 ${i === 0 ? "rounded-[var(--radius-xl)] bg-[var(--cs-accent)]" : card}`}>
             <p className={`font-display text-[40px] font-extrabold leading-none tracking-[-1.5px] md:text-[52px] ${i === 0 ? "text-white" : "text-[var(--cs-accent-light)]"}`}>{stat.value}</p>
             <p className="mt-4 font-display text-[17px] font-bold leading-tight">{stat.label}</p>
             <p className={`mt-1 text-sm ${i === 0 ? "text-white/75" : "text-[var(--color-text-secondary)]"}`}>{stat.detail}</p>
@@ -30,7 +31,7 @@ export function CsResults({ results, prototype }: { results: CaseStudy["results"
         </div>
         <ul className="flex flex-col gap-3">
           {results.learnings.map((card) => (
-            <li key={card.title} className={`${csCard} relative overflow-hidden py-5 pl-8 pr-6`}>
+            <li key={card.title} className={`${card} relative overflow-hidden py-5 pl-8 pr-6`}>
               <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1.5 bg-[var(--cs-accent-mid)]" />
               <h4 className="font-display text-[19px] font-bold leading-tight">{card.title}</h4>
               <p className="mt-2 text-[15px] leading-[1.6] text-[var(--color-text-secondary)]">{card.body}</p>
@@ -38,6 +39,6 @@ export function CsResults({ results, prototype }: { results: CaseStudy["results"
           ))}
         </ul>
       </div>
-    </SectionShell>
+    </Section>
   );
 }

@@ -4,4 +4,4 @@ import { Hero } from "@/components/home/hero";
 import { Interests } from "@/components/home/interests";
 import { WorkApproach } from "@/components/home/work-approach";
 import { Footer } from "@/components/layout/footer";
-export function HomePage(){return <main><Hero/><FeaturedProjects/><WorkApproach/><ContactBanner/><Interests/><Footer/></main>}
+export function HomePage(){return <main className="theme-nk"><Hero/><FeaturedProjects/><WorkApproach/><ContactBanner/><Interests/><Footer/></main>}

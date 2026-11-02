@@ -1,8 +1,9 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { PosDevice } from "@/components/case-study/pos-device";
-import { PrototypeButton, brutalistButton } from "@/components/case-study/prototype-button";
-import { SectionLabel } from "@/components/case-study/section-shell";
+import { PrototypeButton } from "@/components/case-study/prototype-button";
+import { brutalistButton } from "@/components/ui/button";
+import { SectionLabel } from "@/components/ui/section";
 import type { CaseStudy } from "@/content/case-studies/postsmart";
 
 // Margen fijo que agrega el embed de Figma alrededor del prototipo (en px).

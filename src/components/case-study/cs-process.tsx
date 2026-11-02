@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { SectionShell, csCard } from "@/components/case-study/section-shell";
+import { Section, card } from "@/components/ui/section";
 import type { AuditRow, CaseStudy, ProcessStep } from "@/content/case-studies/postsmart";
 
 function Step({ step, children }: { step: ProcessStep; children: ReactNode }) {
@@ -27,7 +27,7 @@ function AuditTag({ tag }: { tag: AuditRow["tag"] }) {
 export function CsProcess({ process }: { process: CaseStudy["process"] }) {
   const [empathize, ideate, test] = process.steps;
   return (
-    <SectionShell id="proceso" ghost="03" label={process.label}>
+    <Section id="proceso" ghost="03" label={process.label}>
       <ol>
         <Step step={empathize}>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -38,7 +38,7 @@ export function CsProcess({ process }: { process: CaseStudy["process"] }) {
         </Step>
 
         <Step step={ideate}>
-          <div className={`${csCard} overflow-hidden`}>
+          <div className={`${card} overflow-hidden`}>
             <p className="border-b border-[var(--border-subtle)] px-6 py-4 text-[12px] uppercase tracking-[3px] text-[var(--color-text-muted)]">{process.auditTitle}</p>
             <div className="overflow-x-auto">
               <table className="w-full min-w-[640px] border-collapse text-left text-[15px]">
@@ -66,7 +66,7 @@ export function CsProcess({ process }: { process: CaseStudy["process"] }) {
         <Step step={test}>
           <ul className="grid gap-4 md:grid-cols-3">
             {process.testCards.map((card) => (
-              <li key={card.title} className={`${csCard} h-full p-6`}>
+              <li key={card.title} className={`${card} h-full p-6`}>
                 <h4 className="font-display text-[20px] font-bold leading-tight">{card.title}</h4>
                 <p className="mt-3 text-[15px] leading-[1.6] text-[var(--color-text-secondary)]">{card.body}</p>
               </li>
@@ -74,6 +74,6 @@ export function CsProcess({ process }: { process: CaseStudy["process"] }) {
           </ul>
         </Step>
       </ol>
-    </SectionShell>
+    </Section>
   );
 }
