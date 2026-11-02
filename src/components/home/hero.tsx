@@ -1,12 +1,13 @@
 import Image from "next/image";
 import { Header } from "@/components/layout/header";
 import { OutlineButton } from "@/components/ui/button";
+import { Chip } from "@/components/ui/chip";
 import { FoldText } from "@/components/ui/fold-text";
 
 export function Hero() {
   const introBlock = (
     <div className="flex flex-col gap-3">
-      <div className="relative h-16 w-16 bg-[var(--accent)]">
+      <div className="relative h-16 w-16 rounded-[var(--radius-lg)] bg-[var(--accent)]">
         <span className="absolute -top-[6px] left-[10px] font-[var(--font-inter)] text-[96px] leading-[96px] text-[var(--on-accent)]">“</span>
       </div>
       <div className="font-display text-[32px] font-light leading-[38px] tracking-[-1.4px] text-white/75 md:w-[609px] md:text-[40px] md:leading-[47px] md:tracking-[-1.75px]">
@@ -17,7 +18,7 @@ export function Hero() {
         </p>
         <p className="font-sans font-light">6 años de experiencia diseñando con criterio de negocio y ejecución visual.</p>
       </div>
-      <p className="font-sans text-lg font-light leading-[27px] tracking-[-.4395px] text-white/60 md:w-[584px]">Graduada en la UNLP · Buenos Aires</p>
+      <p className="font-sans text-lg font-light leading-[27px] tracking-[-.4395px] text-white/60 md:w-[584px] lg:hidden">Graduada en la UNLP · Buenos Aires</p>
     </div>
   );
 
@@ -45,6 +46,8 @@ export function Hero() {
           backgroundImage:
             "linear-gradient(to right, rgb(255 255 255 / 4%) 1px, transparent 1px), linear-gradient(to bottom, rgb(255 255 255 / 4%) 1px, transparent 1px)",
           backgroundSize: "120px 120px",
+          maskImage: "radial-gradient(ellipse at 50% 45%, black 30%, transparent 75%)",
+          WebkitMaskImage: "radial-gradient(ellipse at 50% 45%, black 30%, transparent 75%)",
         }}
       />
       <Header />
@@ -69,8 +72,8 @@ export function Hero() {
         </h1>
         <p className="mt-2 w-full text-base normal-case leading-6 text-white/35">Agustina “Neky” Surraco</p>
         <div className="relative mt-10 h-[280px] w-[254px] shrink-0 md:h-[336px] md:w-[307px]">
-          <div className="absolute left-[8px] top-[9px] h-[271px] w-[246px] border-2 border-[var(--accent-light)] md:h-[325px] md:w-[295px]" />
-          <div className="relative h-[272px] w-[246px] overflow-hidden md:h-[326px] md:w-[296px]">
+          <div aria-hidden="true" className="absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--accent-mid)] opacity-[0.45] blur-[120px]" />
+          <div className="relative h-[272px] w-[246px] overflow-hidden rounded-[var(--radius-xl)] shadow-[0_40px_60px_rgb(0_0_0_/_50%)] md:h-[326px] md:w-[296px]">
             <Image src="/images/home/hero-portrait.png" alt="Retrato de Agustina Neky Surraco" width={296} height={326} className="h-full w-full object-cover" />
             <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(132.214deg, rgba(0,0,0,.4) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,.3) 100%)" }} />
           </div>
@@ -85,7 +88,7 @@ export function Hero() {
       <div className="hidden lg:block">
         <div className="absolute left-1/2 top-[133px] -translate-x-1/2">{pill}</div>
         <div className="absolute left-1/2 top-[193px] flex -translate-x-1/2 flex-col items-center whitespace-nowrap uppercase">
-          <p className="origin-center scale-y-[-1] whitespace-nowrap font-sans text-[83.599px] font-black leading-[71.059px] tracking-[-4.194px] text-white/12">Agustina Surraco</p>
+          <p style={{ maskImage: "linear-gradient(to bottom, black, transparent 85%)", WebkitMaskImage: "linear-gradient(to bottom, black, transparent 85%)" }} className="origin-center scale-y-[-1] whitespace-nowrap font-sans text-[83.599px] font-black leading-[71.059px] tracking-[-4.194px] text-white/12">Agustina Surraco</p>
           <h1 className="font-display text-white">
             <FoldText
               text="Agustina Surraco"
@@ -103,11 +106,13 @@ export function Hero() {
 
         <div className="absolute left-1/2 top-[454px] flex w-[960px] -translate-x-1/2 items-start gap-7">
           <div className="relative h-[336px] w-[307.41px] shrink-0">
-            <div className="absolute left-[10.05px] top-[10.89px] h-[324.162px] w-[294.845px] border-2 border-[var(--accent-light)]" />
-            <div className="relative h-[325px] w-[294.845px] overflow-hidden">
+            <div aria-hidden="true" className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--accent-mid)] opacity-[0.45] blur-[120px]" />
+            <div className="relative h-[325px] w-[294.845px] overflow-hidden rounded-[var(--radius-xl)] shadow-[0_40px_60px_rgb(0_0_0_/_50%)]">
               <Image src="/images/home/hero-portrait.png" alt="Retrato de Agustina Neky Surraco" width={295} height={325} className="h-full w-full object-cover" />
               <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(132.214deg, rgba(0,0,0,.4) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,.3) 100%)" }} />
             </div>
+            <Chip value="6 años" label="de experiencia" className="absolute -left-10 top-8" />
+            <Chip value="UNLP" label="Buenos Aires" className="absolute -right-8 bottom-10" />
           </div>
           <div className="flex flex-col items-start gap-9">
             {introBlock}

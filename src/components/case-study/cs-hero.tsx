@@ -1,18 +1,8 @@
 import Image from "next/image";
 import { Header } from "@/components/layout/header";
+import { Chip, glass } from "@/components/ui/chip";
 import { container } from "@/components/ui/section";
 import type { CaseStudy } from "@/content/case-studies/postsmart";
-
-const glass = "border border-white/[0.16] bg-black/[0.72] backdrop-blur-[24px]";
-
-function Chip({ value, label, className }: { value: string; label: string; className: string }) {
-  return (
-    <div className={`${glass} rounded-2xl px-5 py-3 ${className}`}>
-      <p className="font-display text-[34px] font-extrabold leading-none text-[var(--cs-accent-light)]">{value}</p>
-      <p className="mt-1 text-sm text-white/70">{label}</p>
-    </div>
-  );
-}
 
 export function CsHero({ hero }: { hero: CaseStudy["hero"] }) {
   return (
