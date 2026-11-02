@@ -16,7 +16,7 @@ export function Hero() {
           <span className="font-sans font-semibold text-white/92">Product Designer especializada en UX/UI</span>{" "}
           que lleva productos de la estrategia al MVP.
         </p>
-        <p className="font-sans font-light">6 años de experiencia diseñando con criterio de negocio y ejecución visual.</p>
+        <p className="font-sans font-light"><span className="lg:hidden">6 años de experiencia diseñando con criterio de negocio y ejecución visual.</span><span className="hidden lg:inline">Diseño con criterio de negocio y ejecución visual.</span></p>
       </div>
       <p className="font-sans text-lg font-light leading-[27px] tracking-[-.4395px] text-white/60 md:w-[584px] lg:hidden">Graduada en la UNLP · Buenos Aires</p>
     </div>
@@ -36,7 +36,7 @@ export function Hero() {
       style={{
         backgroundColor: "var(--color-bg-base)",
         backgroundImage:
-          "radial-gradient(circle at 75% 30%, color-mix(in srgb, var(--accent-mid) 35%, transparent), transparent 55%), radial-gradient(circle at 0% 100%, color-mix(in srgb, var(--accent) 25%, transparent), transparent 50%)",
+          "radial-gradient(circle at 75% 30%, color-mix(in srgb, var(--accent-mid) 18%, transparent), transparent 45%), radial-gradient(circle at 0% 100%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 50%)",
       }}
     >
       <div
@@ -50,6 +50,7 @@ export function Hero() {
           WebkitMaskImage: "radial-gradient(ellipse at 50% 45%, black 30%, transparent 75%)",
         }}
       />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-[200px] bg-[linear-gradient(to_bottom,transparent,var(--color-bg-base))]" />
       <Header />
 
       {/* Mobile & tablet layout */}
@@ -72,7 +73,7 @@ export function Hero() {
         </h1>
         <p className="mt-2 w-full text-base normal-case leading-6 text-white/35">Agustina “Neky” Surraco</p>
         <div className="relative mt-10 h-[280px] w-[254px] shrink-0 md:h-[336px] md:w-[307px]">
-          <div aria-hidden="true" className="absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--accent-mid)] opacity-[0.45] blur-[120px]" />
+          <div aria-hidden="true" className="absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--accent-mid)] opacity-[0.3] blur-[120px]" />
           <div className="relative h-[272px] w-[246px] overflow-hidden rounded-[var(--radius-xl)] shadow-[0_40px_60px_rgb(0_0_0_/_50%)] md:h-[326px] md:w-[296px]">
             <Image src="/images/home/hero-portrait.png" alt="Retrato de Agustina Neky Surraco" width={296} height={326} className="h-full w-full object-cover" />
             <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(132.214deg, rgba(0,0,0,.4) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,.3) 100%)" }} />
@@ -102,16 +103,16 @@ export function Hero() {
             />
           </h1>
         </div>
-        <p className="absolute left-[calc(50%-298px)] top-[353px] text-base leading-6 text-white/35">Agustina “Neky” Surraco</p>
+        <p className="absolute left-1/2 top-[353px] -translate-x-1/2 whitespace-nowrap text-center text-base leading-6 text-white/35">Agustina “Neky” Surraco</p>
 
         <div className="absolute left-1/2 top-[454px] flex w-[960px] -translate-x-1/2 items-start gap-7">
           <div className="relative h-[336px] w-[307.41px] shrink-0">
-            <div aria-hidden="true" className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--accent-mid)] opacity-[0.45] blur-[120px]" />
+            <div aria-hidden="true" className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--accent-mid)] opacity-[0.3] blur-[120px]" />
             <div className="relative h-[325px] w-[294.845px] overflow-hidden rounded-[var(--radius-xl)] shadow-[0_40px_60px_rgb(0_0_0_/_50%)]">
               <Image src="/images/home/hero-portrait.png" alt="Retrato de Agustina Neky Surraco" width={295} height={325} className="h-full w-full object-cover" />
               <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(132.214deg, rgba(0,0,0,.4) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,.3) 100%)" }} />
             </div>
-            <Chip value="6 años" label="de experiencia" className="absolute -left-10 top-8" />
+            <Chip value="6 años" label="de experiencia" className="absolute -left-10 -top-4" />
             <Chip value="UNLP" label="Buenos Aires" className="absolute -right-8 bottom-10" />
           </div>
           <div className="flex flex-col items-start gap-9">
