@@ -1,3 +1,4 @@
 import { featuredProjects } from "@/content/projects";
 import { ProjectCard } from "@/components/projects/project-card";
-export function FeaturedProjects(){return <section id="proyectos" className="mx-auto mt-16 flex h-auto w-full max-w-[960px] scroll-mt-[83px] flex-col justify-center gap-10 px-5 md:mt-[88px] md:px-10 lg:mt-[110px] lg:h-[626px] lg:w-[960px] lg:gap-[60px] lg:px-0"><h2 className="text-4xl font-sans font-extrabold uppercase tracking-[-2px] md:text-[56px] lg:text-[80px]">Proyectos</h2><div className="flex flex-col items-stretch gap-7 lg:flex-row lg:items-start">{featuredProjects.map(project=><ProjectCard key={project.slug} project={project}/>)}</div></section>}
+import { Section } from "@/components/ui/section";
+export function FeaturedProjects(){return <Section id="proyectos" ghost="01" label="01 — Proyectos"><h2 className="mt-10 font-display text-[40px] font-extrabold leading-[1.1] tracking-[-1.5px] md:text-[56px]">Proyectos</h2><div className="mt-10 flex flex-col items-stretch gap-7 lg:flex-row lg:items-start">{featuredProjects.map(project=><ProjectCard key={project.slug} project={project}/>)}</div></Section>}
