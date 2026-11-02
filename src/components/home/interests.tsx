@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { homeContent } from "@/content/home";
+import { Section } from "@/components/ui/section";
 
 const gallery = [
   { src: "/images/home/interest-1.png", alt: "Trabajo de lettering" },
@@ -48,14 +49,15 @@ export function Interests() {
   }, [selected]);
 
   return (
-    <section id="intereses" className="mx-auto w-full max-w-[960px] scroll-mt-[83px] px-5 py-16 md:px-10 lg:w-[960px] lg:px-0 lg:py-[96px]">
-      <h2 className="text-4xl font-sans font-extrabold uppercase tracking-[-2px] md:text-[48px] lg:text-[64px]">Otros intereses</h2>
+    <>
+    <Section id="intereses" ghost="03" label="03 — Otros intereses">
+      <h2 className="mt-10 font-display text-[40px] font-extrabold leading-[1.1] tracking-[-1.5px] md:text-[56px]">Otros intereses</h2>
       <div className="mt-10 flex flex-wrap gap-3 md:gap-6">
         {homeContent.interests.map((item, index) => (
-          <span className={`border px-4 py-2 text-lg uppercase tracking-[2px] ${index === 1 ? "border-[var(--color-accent)] text-[var(--color-accent)]" : "border-white/20"}`} key={item}>{item}</span>
+          <span className={`rounded-full px-4 py-2 text-lg uppercase tracking-[2px] ${index === 1 ? "bg-[var(--accent)] text-[var(--on-accent)]" : "border border-white/[0.18] bg-white/[0.06]"}`} key={item}>{item}</span>
         ))}
       </div>
-      <div className="mt-16 grid grid-cols-2 gap-3 lg:flex lg:items-center lg:gap-0">
+      <div className="mt-16 grid grid-cols-2 gap-3 lg:flex lg:items-center">
         {gallery.map((image, index) => (
           <button
             type="button"
@@ -63,17 +65,20 @@ export function Interests() {
             ref={(el) => { triggerRefs.current[index] = el; }}
             onClick={() => openAt(index)}
             aria-label={`Ampliar imagen: ${image.alt}`}
-            className="group aspect-[230/410] w-full overflow-hidden lg:h-[410px] lg:w-[230px]"
+            className="group aspect-[230/410] w-full overflow-hidden rounded-[var(--radius-lg)] lg:h-[410px] lg:w-[230px]"
           >
             <Image src={image.src} alt={image.alt} width={230} height={410} className="h-full w-full object-cover transition-transform duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05] lg:h-[410px] lg:w-[230px]" />
           </button>
         ))}
       </div>
-      <div className="mx-auto mt-20 w-full max-w-[780px] border-2 border-white p-6 md:p-12">
-        <div className="flex h-16 w-16 items-center justify-center bg-[var(--color-accent)] font-[var(--font-inter)] text-7xl leading-none text-black">“</div>
-        <p className="mt-6 font-display text-[32px] leading-[38px] tracking-[-.5px] md:text-[48px] md:leading-[54px] lg:text-[64px] lg:leading-[70.4px] lg:tracking-[-1px]">Encuentro en el dibujo y lettering un espacio de exploración y expresión.</p>
-        <p className="mt-8 border-l-2 border-[var(--color-accent)] pl-8 text-xl leading-[26px] text-white/70 md:text-2xl">Trabajo con formas y trazos como una manera de soltar lo racional y conectar con lo visual.</p>
-      </div>
+      <figure className="mb-20 mt-20 flex flex-col gap-6 md:mb-[120px] md:flex-row md:gap-8">
+        <span aria-hidden="true" className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[var(--radius-lg)] bg-[var(--accent)] font-display text-[48px] font-extrabold leading-none text-[var(--on-accent)]">&ldquo;</span>
+        <div>
+          <blockquote className="font-sans text-[32px] font-light leading-[1.25] tracking-[-.5px] md:text-[48px] md:tracking-[-1px]">Encuentro en el dibujo y lettering un espacio de exploración y expresión.</blockquote>
+          <p className="mt-8 border-l-2 border-[var(--accent-light)] pl-8 text-xl leading-[26px] text-white/70 md:text-2xl">Trabajo con formas y trazos como una manera de soltar lo racional y conectar con lo visual.</p>
+        </div>
+      </figure>
+    </Section>
 
       {selected !== null && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(0,0,0,0.85)]" onClick={close}>
@@ -92,6 +97,6 @@ export function Interests() {
           </div>
         </div>
       )}
-    </section>
+    </>
   );
 }
